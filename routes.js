@@ -99,7 +99,7 @@ module.exports = function(app){
       var sender_address = req.body.address1;
       var sender_secret = req.body.secret1;
       var recipient_address = 'rUqnEUEknY3fY2rN5w4xezwSdGYJQz4tzt';
-      var amount = '22';
+      var amount = req.body.amount;
 
       const instructions = {maxLedgerVersionOffset: 5}
       const currency = 'XRP'
