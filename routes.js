@@ -47,6 +47,7 @@ module.exports = function(app){
     
   });
 
+  //Transfer XRP
   app.post('/transferRipple', function(req, res){
     
       var sender_address = req.body.address1;
@@ -96,6 +97,7 @@ module.exports = function(app){
     
   });
 
+  //Transfer XRP without destination.tag
   app.post('/transferRippleNoTag', function(req, res){
     
       var sender_address = req.body.address1;

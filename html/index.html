@@ -96,29 +96,6 @@
 			
 				});
 
-				/* Check Ripple Balance
-				function checkXrpBalance() {
-				
-							console.log('inside ajax func...')							
-				
-							var address = document.getElementById("address").value;
-								
-							$.ajax({
-								url: '/checkBalance',
-								type: 'POST',
-								data: JSON.stringify({"address":address}),
-								processData: "json",
-								contentType: "application/json",
-								success: function(data){
-									console.log('Your XRP balance is: \n' + data.balance);
-									document.getElementById("xrpBalance").innerHTML = data.balance;
-							    }
-						 });
-								 
-					 return true;
-				
-				} */
-
 			});
 	   </script>
 
@@ -246,7 +223,7 @@
 													<input type="text" class="form-control" placeholder="Enter Recipient Address..." name="address2" required>
 												</div>
 												<div class="col-md-12">
-													<input type="text" class="form-control" placeholder="Enter Destination Tag... (Required) " name="tag2" min="0">
+													<input type="text" class="form-control" placeholder="Enter Destination Tag... (Required) " name="tag2" min="0" required>
 												</div>
 												<div class="col-md-12">
 													<input type="number" min="1" class="form-control" placeholder="Enter XRP amount to transfer..." name="amount" required>
