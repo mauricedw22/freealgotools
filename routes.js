@@ -53,6 +53,7 @@ module.exports = function(app){
       var sender_secret = req.body.secret1;
       var recipient_address = req.body.address2;
       var amount = req.body.amount;
+      var tag = req.body.tag2;
 
       const instructions = {maxLedgerVersionOffset: 5}
       const currency = 'XRP'
@@ -69,7 +70,8 @@ module.exports = function(app){
           address: recipient_address,
           amount: {
             value: amount,
-            currency: currency
+            currency: currency,
+            tag: tag
           }
         }
       }
