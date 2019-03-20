@@ -70,8 +70,56 @@ module.exports = function(app){
           address: recipient_address,
           amount: {
             value: amount,
-            currency: currency,
-            tag: tag
+            currency: currency
+          },
+          tag: tag,
+        }
+      }
+
+      api.connect().then(() => {
+        //console.log('Connected...')
+        api.preparePayment(sender_address, payment, instructions).then(prepared => {
+          const {signedTransaction, id} = api.sign(prepared.txJSON, sender_secret)
+          console.log(id)
+          api.submit(signedTransaction).then(result => {
+            console.log(JSON.stringify(result, null, 2));
+            res.send(result.resultMessage + '<BR><BR><a href="/">Back</a>');
+           }).catch(err => {
+              //console.log(err);
+              res.send('Transaction was unsuccessful. Make sure addresses have balances and try again.' + '<BR><BR><a href="/">Back</a>')
+            })      
+           api.disconnect()  
+         })      
+        }).catch(console.error)
+
+      //res.send(getXrpBalance(address));
+    
+  });
+
+  app.post('/transferRippleNoTag', function(req, res){
+    
+      var sender_address = req.body.address1;
+      var sender_secret = req.body.secret1;
+      var recipient_address = req.body.address2;
+      var amount = req.body.amount;
+      //var tag = req.body.tag2;
+
+      const instructions = {maxLedgerVersionOffset: 5}
+      const currency = 'XRP'
+      
+      const payment = {
+        source: {
+          address: sender_address,
+          maxAmount: {
+            value: amount,
+            currency: currency
+          }
+        },
+        destination: {
+          address: recipient_address,
+          amount: {
+            value: amount,
+            currency: currency
           }
         }
       }
