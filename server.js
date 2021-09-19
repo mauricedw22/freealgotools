@@ -17,7 +17,7 @@ app.engine('html', engines.mustache);
 app.set('views', __dirname + '/html');
 app.set('view engine', 'html');
 
-app.use(session({secret:'Ripple Dev Tools - Ripple Secure Wallet Generator'}));
+app.use(session({secret:'ALGO Dev Tools - Algorand Secure Wallet Generator and Toolkit'}));
 
 require('./routes.js')(app);
 

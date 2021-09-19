@@ -105,7 +105,7 @@ img
     {
          width: 30px;
         height: 30px;
-        background-color: #28a7e9;
+        background-color: #f37e33;
          margin: 0 auto;
         -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
                 animation: sk-rotatePlane 1.2s infinite ease-in-out;
@@ -141,14 +141,14 @@ img
 /* start navigation */
 .navbar-default
     {
-        background: #fff;
+        background: linear-gradient(90deg, #b72375 3%, #f37e33 97%);
         border: none;
         box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.08);
         margin: 0!important;
     }
 .navbar-default .navbar-brand
     {
-        color: #28a7e9;
+        color: black;
         font-size: 30px;
         font-weight: bold;
         height: 70px;
@@ -156,7 +156,7 @@ img
     }
 .navbar-default .nav li a
     {
-        color: #666;
+        color: black;
         font-size: 13px;
         font-weight: bold;
         height: 70px;
@@ -166,7 +166,7 @@ img
 .navbar-default .nav li a:focus,
 .navbar-default .nav li a.current
     {
-        color: #28a7e9;
+        color: white;
     }
 
 .navbar-default .navbar-toggle
@@ -176,7 +176,7 @@ img
     }
 .navbar-default .navbar-toggle .icon-bar
     {
-        background: #28a7e9;
+        background: #b72375;
         border-color: transparent;
     }
 .navbar-default .navbar-toggle:hover,
@@ -215,7 +215,7 @@ img
     }
 #divider .fa
     {
-        color: #28a7e9;
+        color: #f37e33;
         font-size: 60px;
     }
 #divider h3
@@ -241,7 +241,7 @@ img
     }
 #feature .fa
     {
-        background: #28a7e9;
+        background: #f37e33;
         border-radius: 50%;
         color: #fff;
         display: inline-block;
@@ -269,7 +269,7 @@ img
     }
 #feature1 .fa
     {
-        background: #28a7e9;
+        background: #f37e33;
         border-radius: 50%;
         color: #fff;
         display: inline-block;
@@ -304,7 +304,7 @@ img
     }
 #pricing .pricing .pricing-title
     {
-        background: #28a7e9;
+        background: #f37e33;
         color: #fff;
         font-weight: bold;
         padding: 30px;
@@ -327,9 +327,9 @@ img
 #pricing .pricing .btn
     {
         background: transparent;
-        border: 1px solid #28a7e9;
+        border: 1px solid #f37e33;
         border-radius: 0px;
-        color: #28a7e9;
+        color: #f37e33;
         font-weight: bold;
         padding-right: 40px;
         padding-left: 40px;
@@ -338,7 +338,7 @@ img
         transition: all 0.3s ease;
     }
 #pricing .pricing .btn:hover {
-    background: #28a7e9;
+    background: #f37e33;
     color: #fff;
 }
 /* end pricing */
@@ -379,7 +379,7 @@ img
     }
 #contact address .fa
     {
-        background: #28a7e9;
+        background: #f37e33;
         border-radius: 50%;
         width: 40px;
         height: 40px;
@@ -405,7 +405,7 @@ img
     }
 #contact input[type="submit"]
     {
-        background: #28a7e9;
+        background: #f37e33;
         color: #fff;
         font-weight: bold;
         transition: all 0.3s ease;
@@ -417,13 +417,13 @@ img
 
 /* start donate-ripple-xrp */
 
-#donate-ripple-xrp address
+#donate-algo address
 {
     padding-top: 20px;
 }
-#donate-ripple-xrp address .fa
+#donate-algo address .fa
 {
-    background: #28a7e9;
+    background: #f37e33;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -432,23 +432,76 @@ img
     margin-top: 6px;
     margin-right: 10px;
 }
-#donate-ripple-xrp .contact-form
+#donate-algo .contact-form
 {
     padding-top: 40px;
 }
-#donate-ripple-xrp .form-control
+#donate-algo .form-control
 {
     border: none;
     border-radius: 0px;
     box-shadow: none;
     margin-bottom: 20px;
 }
-#donate-ripple-xrp input
+#donate-algo input
 {
     height: 50px;
 }
 
 /* end donate-ripple-xrp */
+
+/* start walkercoin */
+#walkercoin
+    {
+        background: url('../images/contact-bg.jpg') no-repeat;
+        background-size: cover;
+        color: #fff;
+    }
+#walkercoin h2
+    {
+        padding-bottom: 10px;
+    }
+#walkercoin address
+    {
+        padding-top: 20px;
+    }
+#walkercoin address .fa
+    {
+        background: #f37e33;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        margin-top: 6px;
+        margin-right: 10px;
+    }
+#walkercoin .contact-form
+    {
+        padding-top: 40px;
+    }
+#walkercoin .form-control
+    {
+        border: none;
+        border-radius: 0px;
+        box-shadow: none;
+        margin-bottom: 20px;
+    }
+#walkercoin input
+    {
+        height: 50px;
+    }
+#walkercoin input[type="submit"]
+    {
+        background: #f37e33;
+        color: #fff;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+#walkercoin input[type="submit"]:hover {
+    background: #107DB6;
+}
+/* end contact */
 
 /* start footer */
 footer

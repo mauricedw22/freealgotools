@@ -1,17 +1,17 @@
 {
-  "name": "Secure_Ripple_Wallet_Generator",
+  "name": "Secure_Algorand_Wallet_Generator and Toolkit",
   "version": "1.0.0",
-  "description": "Generate Ripple XRP wallets on the fly!",
+  "description": "Generate ALGO wallets and transactions on the fly!",
   "main": "server.js",
   "dependencies": {
+    "algosdk": "^1.11.1",
     "body-parser": "^1.14.2",
     "consolidate": "^0.14.0",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "html": "^0.0.10",
     "minimist": "^1.2.0",
-    "mustache": "^2.2.1",
-    "ripple-lib": "^1.1.0"
+    "mustache": "^2.2.1"
   },
   "devDependencies": {},
   "scripts": {
