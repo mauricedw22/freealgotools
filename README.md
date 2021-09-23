@@ -4,7 +4,6 @@
 </strong><br><br>
 <strong> Try the <a href="https://freealgotools.herokuapp.com" target="_blank">FreeAlgoTools app</a> live!</strong>
 </div>
-<br>
 
 # Features
 
