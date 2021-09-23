@@ -8,9 +8,9 @@
 
 # Features
 
-·       Securely generate your own Algorand accounts (address/passphrase combinations).
-·       Check your ALGO balances.
-·       Send ALGO to and from accounts.
+·       Securely generate your own Algorand accounts (address/passphrase combinations). <BR>
+·       Check your ALGO balances. <BR>
+·       Send ALGO to and from accounts. <BR>
 ·       Earn Algorand’s native APY (around 5-6%) by sending yourself zero transactions daily.
 
 # Notes
