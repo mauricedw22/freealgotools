@@ -5,7 +5,7 @@ module.exports = function(app){
     const algodServer = "https://mainnet-algorand.api.purestake.io/ps2";
     const algodPort = "";
     const algodToken = {
-        'X-API-Key': "X7HxsshAnN626baE6sNP9963GCwayNPXamoGg3fy"
+        'X-API-Key': "<Purestake_APIKEY>"
     };
 
     const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
@@ -127,7 +127,7 @@ module.exports = function(app){
       (async() => {
 
         var passphrase = req.body.passphrase;
-        var receiver = "3G43UUPLUBKSB2QU6BTID2ODT3SXFLNEKHKEAUWYFNNEFI2LO57HI5KJTA";
+        var receiver = "<receiver_publicKey>";
         var amount = (req.body.amount)*1000000;
 
         let myAccount = algosdk.mnemonicToSecretKey(passphrase);
@@ -135,7 +135,6 @@ module.exports = function(app){
         console.log("Sender address: %s", sender);
 
         let accountInfo = await algodClient.accountInformation(sender).do();
-        //console.log("Account balance: %d microAlgos", accountInfo.amount);
 
         let params = await algodClient.getTransactionParams().do();
         const enc = new TextEncoder();
@@ -171,7 +170,7 @@ module.exports = function(app){
 
     (async() => {
 
-      assetID = 336971959;
+      assetID = "<asset-id>";
 
       let passphrase = req.body.passphrase;
 
@@ -184,11 +183,7 @@ module.exports = function(app){
       let sender1 = optInAcct.addr;
       let recipient1 = optInAcct.addr;
       
-      // We set revocationTarget to undefined as 
-      // This is not a clawback operation
       let revocationTarget1 = undefined;
-      // CloseReaminerTo is set to undefined as
-      // we are not closing out an asset
       let closeRemainderTo1 = undefined;
       let note1 = undefined;
       // We are sending 0 assets
@@ -202,8 +197,6 @@ module.exports = function(app){
       rawSignedTxn = opttxn.signTxn(optInAcct.sk);
       let opttx = (await algodClient.sendRawTransaction(rawSignedTxn).do());
       console.log("Transaction : " + opttx.txId);
-      // wait for transaction to be confirmed
-      // await waitForConfirmation(algodClient, opttx.txId);
 
       //You should now see the new asset listed in the account information
       console.log("New OptIn Account = " + sender1);
@@ -213,7 +206,7 @@ module.exports = function(app){
     })().catch(e => {
 
       console.log(e);
-      res.send('You are now opted in and ready to receive WALK! <BR><BR> Last step: Complete the BUY WALK form on the <a href="/">previous page</a>.');
+      res.send('Your Opt-in Transaction is processing... <BR><BR> Last step: Complete the BUY WALK form on the <a href="/">previous page</a>.');
 
     });
 
@@ -225,16 +218,13 @@ module.exports = function(app){
 
       // ALGO for WALK transaction
       var passphrase = req.body.passphrase;
-      var receiver = "3G43UUPLUBKSB2QU6BTID2ODT3SXFLNEKHKEAUWYFNNEFI2LO57HI5KJTA";
+      var receiver = "<receiver_publicKey>";
       var amt = req.body.amount;
       var amount = (amt)*1000000;
 
       let myAccount = algosdk.mnemonicToSecretKey(passphrase);
       let sender = myAccount.addr;
       console.log("Sender address: %s", sender);
-
-      //let accountInfo = await algodClient.accountInformation(sender).do();
-      //console.log("Account balance: %d microAlgos", accountInfo.amount);
 
       let params = await algodClient.getTransactionParams().do();
       const enc = new TextEncoder();
@@ -256,12 +246,11 @@ module.exports = function(app){
       var string = new TextDecoder().decode(confirmedTxn.txn.txn.note);
       console.log("Note field: ", string);
 
-
       // AssetID for WALK
-      assetID = 336971959;
+      assetID = "<asset-id>";
 
       // Send WALK to recipient
-      var sk1 = "toss economy south ranch slender sphere immune type rare valve report cactus front good goat shy patch age giant delay now they pact about hidden";
+      var sk1 = "<assetIssuer_passphrase>";
 
       let senderAcct = algosdk.mnemonicToSecretKey(sk1);
       let sender2 = senderAcct.addr;
@@ -280,8 +269,6 @@ module.exports = function(app){
       rawSignedTxn2 = xtxn.signTxn(senderAcct.sk);
       let xtx = (await algodClient.sendRawTransaction(rawSignedTxn2).do());
       console.log("Transaction: " + xtx.txId);
-      // wait for transaction to be confirmed
-      // await waitForConfirmation(algodClient, xtx.txId);
 
       // You should now see the 10 assets listed in the account information
       console.log(amount2 + " WALK sent to " + recipient2);
@@ -297,52 +284,5 @@ module.exports = function(app){
     });
 
   });
-
-  /* app.get('/sendWalkcoin', function(req, res){
-
-    (async() => {
-
-      // Send WALK to issuer acct
-
-      assetID = 336971959;
-
-      var sk1 = "innocent hood believe deposit absent climb dizzy wedding check general inherit narrow soda exile enlist zero six view primary tree country scale nut abstract race";
-
-      let senderAcct = algosdk.mnemonicToSecretKey(sk1);
-      let sender2 = senderAcct.addr;
-      let recipient2 = "3G43UUPLUBKSB2QU6BTID2ODT3SXFLNEKHKEAUWYFNNEFI2LO57HI5KJTA";
-
-      let params = await algodClient.getTransactionParams().do();
-
-      revocationTarget2 = undefined;
-      closeRemainderTo2 = undefined;
-      let note2 = undefined;
-      //Amount of the asset to transfer
-      let amount2 = 10000000;
-
-      // signing and sending "txn" will send "amount" assets from "sender" to "recipient"
-      let xtxn = algosdk.makeAssetTransferTxnWithSuggestedParams(sender2, recipient2, closeRemainderTo2, revocationTarget2,
-          amount2,  note2, assetID, params);
-      // Must be signed by the account sending the asset  
-      rawSignedTxn2 = xtxn.signTxn(senderAcct.sk);
-      let xtx = (await algodClient.sendRawTransaction(rawSignedTxn2).do());
-      console.log("Transaction: " + xtx.txId);
-      // wait for transaction to be confirmed
-      await waitForConfirmation(algodClient, xtx.txId);
-
-      // You should now see the 10 assets listed in the account information
-      console.log(amount2 + " WALK sent to " + recipient2);
-      await printAssetHolding(algodClient, recipient2, assetID);
-
-      res.send('Sent back ' + (amount2) + ' WALK to ' + recipient2 + '.<BR><BR><a href="/">Back</a>');
-
-    })().catch(e => {
-
-      console.log(e);
-      res.send('Sorry, something went wrong with the WALK sendback transaction. Please try again. <BR><BR><a href="/">Back</a>');
-
-    });
-
-  }); */
 
 };
